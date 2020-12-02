@@ -22,18 +22,16 @@
 #include "buffer.h"
 
 /* Global vars */
-// TODO_01: lookahead
-// TODO_02: syntaxErrorNumber
+static Token lookahead;
+int syntaxErrorNumber;
+
 extern Buffer* stringLiteralTable;
 extern int line;
 extern Token processToken();
 extern char* keywordTable[];
 
 /* Constants */
-#define	NO_ATTR (-1)
-// TODO_03: Create ALL constants for all keywords
-// Example: #define KEYWORD1 CONSTANTVALUE1
-//...
+enum Keywords{ NO_ATTR = -1, DO, ELSE, FALSE, IF, INPUT, OUTPUT, PROGRAM, THEN, TRUE, WHILE };
 
 /* Function definitions */
 void processParser(void);
@@ -43,4 +41,3 @@ void printError();
 
 // TODO_04 All FunctionsForNonTerminals
 void program(void);
-//...
