@@ -129,8 +129,10 @@ void printError() {
 	Token t = lookahead;
 	printf("PLATY: Syntax error:  Line:%3d\n", line);
 	printf("*****  Token code:%3d Attribute: ", t.code);
+	// TODO_13
+	//Implement all the casers to show the error message. The error messages correspond to the token code of the lookahead.
 	switch (t.code) {
-		// TODO_13
+		
 	default:
 		printf("PLATY: Scanner error: invalid token code: %d\n", t.code);
 	}
@@ -169,9 +171,10 @@ void optionalStatements(void) {
 		//TODO: non-terminal definition
 		break;
 	case KW_T:
-		//If the value of the attribute isn't within the range of the Keywords enum but is a keyword token then it should be a non-terminal
-		if (lookahead.attribute.get_int < 0 ||
-			lookahead.attribute.get_int > 9) {
+		if (lookahead.attribute.get_int == IF
+			|| lookahead.attribute.get_int > WHILE
+			|| lookahead.attribute.get_int > INPUT
+			|| lookahead.attribute.get_int > OUTPUT) {
 			//TODO: non-terminal definition
 			break;
 		}

@@ -196,21 +196,22 @@ Token processToken(void) {
 			if (c == 'N' && bufferGetChar(sourceBuffer) == 'O' && bufferGetChar(sourceBuffer) == 'T' && bufferGetChar(sourceBuffer) == '_'){
 				currentToken.code = LOG_OP_T;
 				currentToken.attribute.log_op = NOT;
+				return currentToken;
 			}
 			else if (c == 'A' && bufferGetChar(sourceBuffer) == 'N' && bufferGetChar(sourceBuffer) == 'D' && bufferGetChar(sourceBuffer) == '_') {
 				currentToken.code = LOG_OP_T;
 				currentToken.attribute.log_op = AND;
+				return currentToken;
 			}
 			else if (c == 'O' && bufferGetChar(sourceBuffer) == 'R' && bufferGetChar(sourceBuffer) == '_') {
 				currentToken.code = LOG_OP_T;
 				currentToken.attribute.log_op = OR;
+				return currentToken;
 			}
 			else {
 				bufferReset(sourceBuffer);
 				currentToken.code = ERR_T;
 				currentToken.attribute.err_lex[0] = '_';
-				//SEOF 255 due to invalid transition error. SEOF0 is for proper EOF.
-				currentToken.attribute.err_lex[0] = CHARSEOF255;
 				return currentToken;
 			}
 
